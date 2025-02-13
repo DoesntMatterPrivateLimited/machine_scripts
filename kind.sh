@@ -34,7 +34,7 @@ chmod +x ./kind
 sudo mv ./kind /usr/local/bin/kind
 
 # 🚀 Setting up Kind cluster
-CONFIG_FILE="./kind-config.yaml"  # Config file should be in the same directory
+CONFIG_FILE="./config.yml"  # Config file should be in the same directory
 
 if [[ ! -f "$CONFIG_FILE" ]]; then
     echo "❌ Error: Kind config file '$CONFIG_FILE' not found!"
