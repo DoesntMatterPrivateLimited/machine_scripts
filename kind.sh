@@ -16,6 +16,11 @@ sudo apt install -y curl openssh-server vim net-tools docker.io
 echo "🔧 Enabling and starting Docker service..."
 sudo systemctl enable --now docker
 
+# 🔥 Fix Docker.sock permission issue
+echo "🔑 Adding current user to Docker group..."
+sudo usermod -aG docker $USER
+newgrp docker  # Apply group change immediately
+
 # 📥 Install kubectl
 echo "📥 Downloading and installing kubectl..."
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
@@ -29,7 +34,7 @@ chmod +x ./kind
 sudo mv ./kind /usr/local/bin/kind
 
 # 🚀 Setting up Kind cluster
-CONFIG_FILE="./config.yml"  # Config file should be in the same directory
+CONFIG_FILE="./kind-config.yaml"  # Config file should be in the same directory
 
 if [[ ! -f "$CONFIG_FILE" ]]; then
     echo "❌ Error: Kind config file '$CONFIG_FILE' not found!"
@@ -37,6 +42,4 @@ if [[ ! -f "$CONFIG_FILE" ]]; then
 fi
 
 echo "🌐 Creating Kind cluster using config file..."
-kind create cluster --name my-kind-cluster --config "$CONFIG_FILE" --image kindest/node:v1.32.0@sha256:c48c62eac5da28cdadcf560d1d8616cfa6783b58f0d94cf63ad1bf49600cb027
-
-echo "✅ Setup completed! Kind cluster is running with 1 control plane and 2 workers."
+kind create cluster --name my-kind-cluster --config "$CONFIG_FILE" --image kindest/node:v1.32.0@sha256
