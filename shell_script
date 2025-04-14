@@ -1,1 +1,67 @@
 
+🧾 Linux Environment Variables – One Page Summary
+🔹 1. Temporary Environment Variables
+
+    Scope: Current shell/session only
+
+    Command:
+
+    export MY_VAR="TemporaryValue"
+    echo $MY_VAR
+
+    Lost when: You close the terminal or reboot.
+
+🔹 2. Permanent (User-Specific) Variables
+
+    Scope: Only available to the current user, across sessions.
+
+    Files: ~/.bashrc, ~/.bash_profile, or ~/.profile (depending on shell)
+
+🛠 How to set:
+
+    Open .bashrc:
+
+nano ~/.bashrc
+
+Add at the end:
+
+export MY_VAR="MyUserValue"
+
+Apply changes:
+
+    source ~/.bashrc
+
+🔹 3. Permanent (All Users – System-Wide)
+✅ Option A: /etc/environment
+
+    Scope: All users, all sessions
+
+    Use for: Simple KEY="value" pairs
+
+    No export needed
+
+sudo nano /etc/environment
+
+# Example:
+MY_VAR="GlobalValue"
+
+    Apply: Reboot or log out/in
+
+✅ Option B: /etc/profile or /etc/profile.d/*.sh
+
+    Scope: All users, interactive shells
+
+    Supports: Shell scripting, export, logic
+
+sudo nano /etc/profile.d/myvars.sh
+
+# Add:
+export MY_VAR="AnotherGlobalValue"
+
+sudo chmod +x /etc/profile.d/myvars.sh
+source /etc/profile.d/myvars.sh
+
+🧪 Check a Variable
+
+echo $MY_VAR
+printenv MY_VAR
