@@ -153,4 +153,8 @@ else
 fi
 echo $#
 ------------------------------------------
-
+$1 = single argument 
+$@ = multiple argument
+$? = error code
+$# = no. of argument show 
+-----------------------------------
