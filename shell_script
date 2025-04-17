@@ -180,3 +180,73 @@ for I in {1..100}; do
         fi
 done
 ------------------------------------------
+🔁 FOR Loop Examples
+✅ Example 1: Print numbers from 1 to 5
+
+#!/bin/bash
+
+for i in {1..5}; do
+  echo "Number: $i"
+done
+-----------------
+🧾 Output:
+
+Number: 1
+Number: 2
+Number: 3
+Number: 4
+Number: 5
+---------------
+✅ Example 2: Loop through a list of strings
+
+#!/bin/bash
+
+for fruit in apple banana cherry; do
+  echo "Fruit: $fruit"
+done
+-----------
+🧾 Output:
+
+Fruit: apple
+Fruit: banana
+Fruit: cherry
+------------
+🔄 WHILE Loop Examples
+✅ Example 1: Print numbers from 1 to 5
+
+#!/bin/bash
+
+i=1
+
+while [ $i -le 5 ]; do
+  echo "Count: $i"
+  ((i++))
+done
+----------
+🧾 Output:
+
+Count: 1
+Count: 2
+Count: 3
+Count: 4
+Count: 5
+------------
+✅ Example 2: Countdown from 5 to 1
+#!/bin/bash
+
+i=5
+
+while [ $i -ge 1 ]; do
+  echo "Countdown: $i"
+  ((i--))
+done
+----------
+🧾 Output:
+Countdown: 5
+Countdown: 4
+Countdown: 3
+Countdown: 2
+Countdown: 1
+---------------------------------------
+
+
