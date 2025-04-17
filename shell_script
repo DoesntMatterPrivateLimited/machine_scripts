@@ -153,8 +153,30 @@ else
 fi
 echo $#
 ------------------------------------------
+
+#!/bin/bash
+for I in {1..100}; do
+        if [ $((I % 2)) -eq 0 ]; then
+                echo "$I is an even number"
+        else
+                echo "$I is an odd number"
+        fi
+done
+~                                                                                                                                                                      
+~                                                                                                                                                                      
+~                                                                                                                                                                      
+~                                                                                                                                                                   
 $1 = single argument 
 $@ = multiple argument
 $? = error code
 $# = no. of argument show 
 -----------------------------------
+#!/bin/bash
+for I in {1..100}; do
+        if [ $((I % 2)) -eq 0 ]; then
+                echo "$I is an even number"
+        else
+                echo "$I is an odd number"
+        fi
+done
+------------------------------------------
