@@ -74,3 +74,4 @@ $?	Exit status of last command	After a command: $? = 0 (success) or 1 (failure)	
 $#	Number of arguments	./script.sh foo bar → $# = 2	Returns the total number of arguments passed to the script
 
 Its shows Vpcs id = aws ec2 describe-vpcs --region ap-south-1 | jq ".Vpcs[].VpcId"
+aws ec2 describe-vpcs --region ap-south-1 | jq ".Vpcs[].VpcId" -r
