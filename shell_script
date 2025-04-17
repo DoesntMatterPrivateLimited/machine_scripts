@@ -248,5 +248,13 @@ Countdown: 3
 Countdown: 2
 Countdown: 1
 ---------------------------------------
+Operator | Meaning
+-eq | Equal to
+-ne | Not equal to
+-lt | Less than
+-gt | Greater than
+-le | Less than or equal
+-ge | Greater than or equal
+---------------------------------
 
 
