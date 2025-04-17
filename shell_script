@@ -72,13 +72,33 @@ $1	First argument	./script.sh foo bar → $1 = foo	Refers to the first argument 
 $@	All arguments	./script.sh foo bar → $@ = foo bar	Refers to all arguments as separate quoted strings ("$1", "$2"...)
 $?	Exit status of last command	After a command: $? = 0 (success) or 1 (failure)	Shows the exit code of the last executed command
 $#	Number of arguments	./script.sh foo bar → $# = 2	Returns the total number of arguments passed to the script
-
+---
 Its shows Vpcs id = aws ec2 describe-vpcs --region ap-south-1 | jq ".Vpcs[].VpcId"
 aws ec2 describe-vpcs --region ap-south-1 | jq ".Vpcs[].VpcId" -r
-
+---
 #!/bin/bash
 REGION='ap-south-1'
 aws ec2 describe-vpcs --region ${REGION} | jq ".Vpcs[].VpcId" -r
 #!/bin/bash
 REGION=$1
 aws ec2 describe-vpcs --region ${REGION} | jq ".Vpcs[].VpcId" -r
+---
+#!/bin/bash
+awd --version 2> /dev/null
+if [ $? -eq 0 ]; then
+        REGION=$1
+        aws ec2 describe-vpcs --region ${REGION} | jq ".Vpcs[].VpcId" -r
+else
+   echo "incorrect command"
+fi
+---
+#!/bin/bash
+aws --version 2> /dev/null
+if [ $? -eq 0 ]; then
+        REGION=$1
+        aws ec2 describe-vpcs --region ${REGION} | jq ".Vpcs[].VpcId" -r
+else
+   echo "incorrect command"
+fi
+---
+
