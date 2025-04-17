@@ -100,5 +100,19 @@ if [ $? -eq 0 ]; then
 else
    echo "incorrect command"
 fi
----
+--------------------
 
+error code in shell script 
+
+Exit Code | Meaning | Notes
+0 | Success | Command executed successfully
+1 | General error | Catch-all for general errors
+2 | Misuse of shell builtins | Missing keyword, syntax error, etc.
+126 | Command found but not executable | Permissions issue (e.g., no execute permission)
+127 | Command not found | Typo or missing software
+128 | Invalid argument to exit | E.g., exit 300 gives this since 300 > 255
+130 | Script terminated by Ctrl+C | Signal interrupt (SIGINT)
+137 | Killed by SIGKILL (kill -9) | Forcefully killed by system or user
+139 | Segmentation fault | Crash due to memory access violation
+
+-------------------------------------------------
