@@ -116,3 +116,23 @@ Exit Code | Meaning | Notes
 139 | Segmentation fault | Crash due to memory access violation
 
 -------------------------------------------------
+$@	All arguments	./script.sh foo bar → $@ = foo bar	Refers to all arguments as separate quoted strings ("$1", "$2"...)
+
+#!/bin/bash
+
+
+aws --version
+
+
+if [ $? -eq 0 ]; then
+    REGIONS=$@
+
+    for REGION in $REGIONS; do
+        aws ec2 describe-vpcs --region ${REGION} | jq ".Vpcs[].VpcId" -r
+    done
+else
+    echo "Incorrect command"
+
+fi
+
+------------------------------------------------------------------
