@@ -75,3 +75,10 @@ $#	Number of arguments	./script.sh foo bar → $# = 2	Returns the total number o
 
 Its shows Vpcs id = aws ec2 describe-vpcs --region ap-south-1 | jq ".Vpcs[].VpcId"
 aws ec2 describe-vpcs --region ap-south-1 | jq ".Vpcs[].VpcId" -r
+
+#!/bin/bash
+REGION='ap-south-1'
+aws ec2 describe-vpcs --region ${REGION} | jq ".Vpcs[].VpcId" -r
+#!/bin/bash
+REGION=$1
+aws ec2 describe-vpcs --region ${REGION} | jq ".Vpcs[].VpcId" -r
