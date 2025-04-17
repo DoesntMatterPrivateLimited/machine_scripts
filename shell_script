@@ -65,3 +65,10 @@ source /etc/profile.d/myvars.sh
 
 echo $MY_VAR
 printenv MY_VAR
+
+💡 Shell Scripting Special Variables
+Variable	Meaning	Example	Description
+$1	First argument	./script.sh foo bar → $1 = foo	Refers to the first argument passed to the script
+$@	All arguments	./script.sh foo bar → $@ = foo bar	Refers to all arguments as separate quoted strings ("$1", "$2"...)
+$?	Exit status of last command	After a command: $? = 0 (success) or 1 (failure)	Shows the exit code of the last executed command
+$#	Number of arguments	./script.sh foo bar → $# = 2	Returns the total number of arguments passed to the script
